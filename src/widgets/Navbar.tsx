@@ -1,8 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { cn } from '../shared/lib/cn';
 import { Button } from '../shared/ui/Button';
-import { toggleTheme } from '../app/theme';
 
 const navItems = [
   { to: '/', label: 'Home', end: true },
@@ -39,19 +38,15 @@ export function Navbar() {
     setOpen(false);
   }, [location.pathname]);
 
-  const themeLabel = useMemo(
-    () => (document.documentElement.classList.contains('dark') ? 'Light' : 'Dark'),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [location.pathname],
-  );
+
 
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/70 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/60">
       <div className="container-px flex h-16 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Brikien Labs" className="h-9 w-9 rounded-xl object-cover" />
+        <Link to="/" className="flex items-center gap-3">
+          <img src="/logo.png" alt="Brikien Labs" className="h-11 w-11 rounded-xl object-cover" />
           <div className="leading-tight">
-            <div className="text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-50">
+            <div className="text-lg font-bold tracking-tight text-slate-900 dark:text-slate-50">
               BRIKIEN LABS
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400">Build. Break. Innovate.</div>
@@ -65,16 +60,6 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => {
-              toggleTheme();
-            }}
-            aria-label="Toggle dark mode"
-          >
-            {themeLabel}
-          </Button>
 
           <Button
             className="md:hidden"

@@ -1,27 +1,19 @@
-const STORAGE_KEY = 'brikien-theme';
-type Theme = 'light' | 'dark';
-
-function getPreferredTheme(): Theme {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored === 'dark' || stored === 'light') return stored;
+function getSystemTheme(): 'light' | 'dark' {
   return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-export function applyTheme(theme: Theme) {
+function applyTheme(theme: 'light' | 'dark') {
   const root = document.documentElement;
   if (theme === 'dark') root.classList.add('dark');
   else root.classList.remove('dark');
-  localStorage.setItem(STORAGE_KEY, theme);
 }
 
 export function initTheme() {
-  applyTheme(getPreferredTheme());
-}
+  // Apply the system theme immediately
+  applyTheme(getSystemTheme());
 
-export function toggleTheme(): Theme {
-  const isDark = document.documentElement.classList.contains('dark');
-  const next: Theme = isDark ? 'light' : 'dark';
-  applyTheme(next);
-  return next;
+  // Listen for OS theme changes and react automatically
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    applyTheme(e.matches ? 'dark' : 'light');
+  });
 }
-
