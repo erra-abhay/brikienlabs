@@ -16,7 +16,7 @@ const team: TeamMember[] = [
     role: 'Full-Stack / Blockchain',
     bio: 'Builds web products, backend systems, and explores enterprise blockchain with Hyperledger Fabric.',
     imageUrl:
-      'data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22640%22%20height%3D%22640%22%20viewBox%3D%220%200%20640%20640%22%3E%3Cdefs%3E%3CradialGradient%20id%3D%22g%22%20cx%3D%2230%25%22%20cy%3D%2220%25%22%20r%3D%2280%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2394a3b8%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230f172a%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width%3D%22640%22%20height%3D%22640%22%20fill%3D%22url(%23g)%22/%3E%3Ctext%20x%3D%22320%22%20y%3D%22355%22%20text-anchor%3D%22middle%22%20font-family%3D%22Inter%2C%20system-ui%2C%20Arial%22%20font-size%3D%22112%22%20fill%3D%22%23ffffff%22%20font-weight%3D%22800%22%3EBL%3C/text%3E%3C/svg%3E',
+             'https://t3.ftcdn.net/jpg/06/01/17/18/360_F_601171862_l7yZ0wujj8o2SowiKTUsfLEEx8KunYNd.jpg' 
   },
   {
     name: 'Hemchand Ankam (CEO & Founder)',

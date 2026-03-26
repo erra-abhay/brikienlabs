@@ -37,7 +37,7 @@ jobs:
         run: npm run build:api
 
   deploy:
-    name: 🚀 Deploy to HPE Server (Zero Downtime)
+    name: 🚀 Deploy to HPE Server
     needs: lint-and-build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: self-hosted
