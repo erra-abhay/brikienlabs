@@ -30,8 +30,7 @@ export function AboutPage() {
           <CardContent>
             <CardTitle>Mission</CardTitle>
             <CardDescription>
-              Deliver secure, maintainable, and high-performing products—built with clean architecture and modern
-              tooling.
+              To engineer secure, scalable, and production-grade systems that address real-world challenges. We specialize in building modern software platforms, blockchain-based certificate verification systems, and private campus token ecosystems—ensuring transparency, security, and long-term maintainability through clean architecture and modern tooling.
             </CardDescription>
           </CardContent>
         </Card>
@@ -39,8 +38,7 @@ export function AboutPage() {
           <CardContent>
             <CardTitle>Vision</CardTitle>
             <CardDescription>
-              Become a trusted engineering partner for startups and teams that want to build fast without compromising
-              quality or security.
+To lead the development of high-performance, secure, and scalable digital systems that redefine how modern applications are built. We strive to become a go-to engineering partner for teams seeking speed, innovation, and uncompromising quality across web, infrastructure, and blockchain technologies.
             </CardDescription>
           </CardContent>
         </Card>
