@@ -187,7 +187,7 @@ export function HomePage() {
                 ))}
               </div>
 
-              <div className="mt-6 border-t border-slate-200 pt-5 text-sm dark:border-slate-800">
+              {/*<div className="mt-6 border-t border-slate-200 pt-5 text-sm dark:border-slate-800">
                 <div className="font-semibold text-slate-900 dark:text-slate-50">Contact</div>
                 <div className="mt-2 space-y-1 text-slate-600 dark:text-slate-300">
                   <div>Email: brikien.labs@gmail.com</div>
@@ -197,7 +197,7 @@ export function HomePage() {
                 <div className="mt-4 text-xs text-slate-500 dark:text-slate-400">
                   © 2026 BRIKIEN LABS — Engineering Real Systems.
                 </div>
-              </div>
+              </div>*/}
             </CardContent>
           </Card>
         </div>
