@@ -42,7 +42,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/70 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/60">
-      <div className="container-px flex h-16 items-center justify-between gap-4">
+      <div className="flex h-16 items-center justify-between gap-4 px-2">
         <Link to="/" className="flex items-center gap-3">
           <img src="/logo.png" alt="Brikien Labs" className="h-11 w-11 rounded-xl object-cover" />
           <div className="leading-tight">
