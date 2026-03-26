@@ -24,7 +24,7 @@ const workAreas = [
   {
     title: 'Research & Emerging Tech',
     description:
-      'BlockChain-Technology, beacon-based proximity systems, high-traffic testing, performance & stress testing,Dencentralised Systems,Distributed Systems , Permissioned Blockchains , and experimental architectures.',
+      'BlockChain-Technology, beacon-based proximity systems, high-traffic testing, performance & stress testing,Dencentralised Systems,Distributed Systems,Permissioned Blockchains , and experimental architectures.',
   },
 ] as const;
 
