@@ -1,0 +1,20 @@
+services:
+  brikien-dev:
+    image: node:20-alpine
+    container_name: brikien-dev-env
+    working_dir: /app
+    volumes:
+      - .:/app
+      # Anonymous volumes to prevent host node_modules from conflicting with container
+      - /app/node_modules
+      - /app/server/node_modules
+    ports:
+      - "5173:5173" # Frontend Vite dev server
+      - "8787:8787" # Backend Express API
+    command: /bin/sh -c "npm install && npm --prefix server install && npm run dev"
+    environment:
+      - NODE_ENV=development
+      - PORT=8787
+      - ALLOWED_ORIGIN=http://localhost:5173
+      - REQUIRE_HUMAN_CHECK=false
+    restart: unless-stopped

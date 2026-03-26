@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BeaconTrack | Bluetooth-Based Secure Attendance System</title>
+
+<meta name="description"
+content="BeaconTrack is a secure Bluetooth-based attendance system developed by BRIKIEN LABS to prevent proxy attendance using beacon proximity verification.">
+
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+/* ===== TERMINAL GLOBAL ===== */
+
+body{
+margin:0;
+font-family:'VT323', monospace;
+background:#020617;
+color:#93c5fd;
+line-height:1.7;
+font-size:22px;
+}
+
+/* CRT scanlines */
+
+body::after{
+content:"";
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:repeating-linear-gradient(
+to bottom,
+rgba(255,255,255,0.04) 0px,
+rgba(255,255,255,0.04) 1px,
+transparent 1px,
+transparent 3px
+);
+pointer-events:none;
+}
+
+.container{
+width:90%;
+max-width:900px;
+margin:auto;
+}
+
+h1,h2,h3{
+color:#bfdbfe;
+font-weight:normal;
+}
+
+h2::before{
+content:"> ";
+color:#3b82f6;
+}
+
+section{
+padding:60px 0;
+}
+
+/* ===== IMAGE FIXES ===== */
+
+img{
+display:block;
+max-width:100%;
+height:auto;
+margin:22px auto;
+border-left:3px solid #3b82f6;
+background:#020617;
+padding:6px;
+}
+
+/* module logos smaller */
+.module-logo{
+width:95px;
+margin:12px auto 8px;
+}
+
+/* diagrams wider but controlled */
+.diagram img{
+max-width:820px;
+}
+
+/* ===== PROGRESS BAR ===== */
+
+#progress{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:#60a5fa;
+width:0%;
+z-index:9999;
+}
+
+/* ===== NAVBAR ===== */
+
+nav{
+position:sticky;
+top:0;
+background:#020617;
+border-bottom:1px solid #1e293b;
+z-index:1000;
+}
+
+nav .container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 0;
+}
+
+nav a{
+color:#60a5fa;
+text-decoration:none;
+margin-left:20px;
+}
+
+nav a:hover{
+text-decoration:underline;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+text-align:center;
+padding:100px 0 80px;
+}
+
+.hero h1{font-size:48px;}
+
+.hero p{
+max-width:700px;
+margin:auto;
+color:#bfdbfe;
+}
+
+/* ===== GRID ===== */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:18px;
+margin-top:25px;
+}
+
+/* ===== TERMINAL BOX STYLE ===== */
+
+.card,.info-card,.flow-step,.diagram,.graph-container{
+background:#020617;
+border-left:3px solid #3b82f6;
+border-top:1px solid #1e293b;
+border-right:1px solid #1e293b;
+border-bottom:1px solid #1e293b;
+padding:18px;
+transition:0.2s;
+}
+
+.card:hover,
+.info-card:hover{
+border-left:3px solid #60a5fa;
+}
+
+.info-card{cursor:pointer;}
+
+/* ===== TOOLTIP ===== */
+
+.tooltip{
+position:fixed;
+background:#020617;
+color:#bfdbfe;
+padding:14px 18px;
+border:1px solid #3b82f6;
+max-width:260px;
+display:none;
+z-index:9999;
+}
+
+/* ===== TABLE ===== */
+
+.compare-table{
+width:100%;
+border-collapse:collapse;
+margin-top:25px;
+}
+
+.compare-table th,
+.compare-table td{
+border:1px solid #1e293b;
+padding:12px;
+text-align:left;
+}
+
+.compare-table th{
+color:#60a5fa;
+}
+
+/* ===== FLOW ===== */
+
+.flow{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:18px;
+margin-top:20px;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+border-top:1px solid #1e293b;
+text-align:center;
+padding:40px;
+color:#64748b;
+}
+
+/* ===== LINKS ===== */
+
+a{
+color:#60a5fa;
+text-decoration:none;
+}
+a:hover{text-decoration:underline;}
+
+</style>
+</head>
+
+<body>
+
+<div id="progress"></div>
+<div id="tooltip" class="tooltip"></div>
+
+<nav>
+<div class="container">
+<strong>BRIKIEN LABS</strong>
+<div>
+<a href="#intro">Intro</a>
+<a href="#modules">Modules</a>
+<a href="#workflow">Workflow</a>
+<a href="#security">Security</a>
+<a href="#tech">Technology</a>
+</div>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<h1>BeaconTrack</h1>
+<p>
+A secure Bluetooth-based attendance system designed to eliminate proxy attendance
+by verifying real physical presence using beacon proximity technology.
+</p>
+</div>
+</section>
+
+<section id="intro">
+<div class="container">
+<h2>Introduction</h2>
+<p>
+Traditional attendance systems rely on QR codes or GPS verification, both of which
+can be easily manipulated. BeaconTrack introduces a proximity-based approach where
+attendance is verified through Bluetooth beacon detection and secure server validation.
+Developed under BRIKIEN LABS, the system connects physical presence with digital identity
+to ensure reliable and fraud-resistant attendance recording.
+</p>
+</div>
+</section>
+
+<!-- PROBLEM COMPARISON -->
+
+<section id="comparison">
+<div class="container">
+<h2>Problem Comparison</h2>
+
+<table class="compare-table">
+<tr>
+<th>Traditional Attendance Systems</th>
+<th>BeaconTrack</th>
+</tr>
+
+<tr>
+<td>QR codes can be shared</td>
+<td>No QR codes used</td>
+</tr>
+
+<tr>
+<td>GPS spoofing possible</td>
+<td>Proximity-based verification</td>
+</tr>
+
+<tr>
+<td>Manual verification required</td>
+<td>Automatic server validation</td>
+</tr>
+
+<tr>
+<td>Proxy attendance possible</td>
+<td>Device-bound authentication</td>
+</tr>
+
+<tr>
+<td>Low reliability</td>
+<td>High accuracy and security</td>
+</tr>
+</table>
+
+</div>
+</section>
+
+<!-- MODULES -->
+
+<section id="modules">
+<div class="container">
+
+<h2>System Modules</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="faculty_logo.jpeg" class="module-logo">
+<h3>Faculty Application</h3>
+<p>
+Faculty creates attendance sessions and broadcasts the session code through the beacon.
+</p>
+</div>
+
+<div class="card">
+<img src="student_logo.jpeg" class="module-logo">
+<h3>Student Application</h3>
+<p>
+Student app detects beacon signal and submits session code for verification.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- WHY DIFFERENT -->
+
+<section id="difference">
+<div class="container">
+<h2>Why BeaconTrack is Different</h2>
+<p>
+Unlike traditional digital attendance systems that rely on visual or location-based
+verification, BeaconTrack combines physical proximity verification with device identity
+binding and server-side validation. This creates a cyber-physical attendance system where
+attendance can only be marked when a registered device is physically present within the
+classroom environment.
+</p>
+</div>
+</section>
+
+<!-- WORKFLOW -->
+
+<section id="workflow">
+<div class="container">
+
+<h2>System Workflow & Architecture</h2>
+
+<div class="diagram">
+<img src="workflow_detailed.png">
+</div>
+
+<div class="diagram">
+<img src="architecture_diagram.png">
+</div>
+
+</div>
+</section>
+
+<!-- FLOW SUMMARY -->
+
+<section id="flow">
+<div class="container">
+
+<h2>System Flow Summary</h2>
+
+<div class="flow">
+
+<div class="flow-step info-card"
+     data-info="Faculty initiates an attendance session from the faculty application, generating a unique session code(Hashed with all required details).">
+<h3>1</h3>
+<p>Faculty starts attendance session</p>
+</div>
+
+<div class="flow-step info-card"
+     data-info="Beacon device broadcasts the session identifier using Bluetooth Low Energy signals within classroom range.">
+<h3>2</h3>
+<p>Beacon broadcasts session code</p>
+</div>
+
+<div class="flow-step info-card"
+     data-info="Student application scans nearby beacons and detects the valid session when inside allowed proximity.">
+<h3>3</h3>
+<p>Student device detects beacon</p>
+</div>
+
+<div class="flow-step info-card"
+     data-info="Backend server validates device identity, session validity(hashed code), and proximity before marking attendance.">
+<h3>4</h3>
+<p>Server verifies and marks attendance</p>
+</div>
+<div class="flow-step info-card"
+     data-info="Students appear in a real-time pending list during broadcasting. Faculty reviews and approves attendance requests instantly.">
+<h3>5</h3>
+<p>Faculty monitors pending approvals</p>
+</div>
+
+</div>
+
+</div>
+</section>
+<section id="management">
+<div class="container">
+
+<h2>Attendance Monitoring and Record Management</h2>
+
+<p>
+BeaconTrack extends beyond automated attendance marking by providing real-time
+attendance monitoring and comprehensive record management for both faculty and students.
+When a faculty member starts broadcasting an attendance session, student attendance
+requests are received instantly by the server and appear in a dynamic pending list within
+the faculty application. This allows faculty to monitor student participation in real time
+and approve attendance requests as they are received during the session.
+</p>
+
+<p>
+The system also maintains detailed attendance logs for both modules. Faculty members can
+view all attendance sessions they have created along with complete records of students who
+attended each session, including timestamps and session details. Students, on the other
+hand, can access their personal attendance history, view the number of sessions attended
+and missed, and monitor their overall attendance percentage. This ensures transparency,
+accountability, and continuous tracking of attendance performance throughout the academic
+term.
+</p>
+
+</div>
+</section>
+
+
+
+<!-- SECURITY -->
+
+<section id="security">
+<div class="container">
+
+<h2>Security Advantages</h2>
+
+<div class="grid">
+
+<div class="info-card" data-info="Attendance cannot be marked using screenshots or shared QR codes since BeaconTrack relies on beacon proximity detection.">
+No QR code sharing or screenshots
+</div>
+
+<div class="info-card" data-info="The system does not depend on GPS location, preventing spoofing using fake location applications.">
+No GPS spoofing dependency
+</div>
+
+<div class="info-card" data-info="Each student device is permanently mapped to a registered identity, preventing attendance from unauthorized devices.">
+Device-based identity binding
+</div>
+
+<div class="info-card" data-info="Session codes expire automatically after class duration, preventing replay attacks.">
+Time-limited session codes
+</div>
+
+<div class="info-card" data-info="All validation is performed on the backend server ensuring secure attendance verification.">
+Server-side verification
+</div>
+
+<div class="info-card" data-info="Attendance is accepted only when the device is physically inside the beacon range.">
+Physical proximity validation
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- USE CASES -->
+
+<section id="usecases">
+<div class="container">
+<h2>Real World Applications</h2>
+
+<div class="grid">
+
+<div class="info-card"
+     data-info="Automatic attendance marking for classrooms without manual roll calls, improving accuracy and saving lecture time.">
+Classroom Attendance Systems
+</div>
+
+<div class="info-card"
+     data-info="Ensures students are physically present during lab sessions where attendance and equipment usage must be verified.">
+Laboratories and Practical Sessions
+</div>
+
+<div class="info-card"
+     data-info="Prevents proxy attendance during examinations by verifying physical proximity inside exam halls.">
+Examination Halls
+</div>
+
+<div class="info-card"
+     data-info="Tracks participation and presence during employee training programs and workshops.">
+Corporate Training Programs
+</div>
+
+<div class="info-card"
+     data-info="Can be integrated into smart campus infrastructure for automated presence verification and analytics.">
+Smart Campus Infrastructure
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- TECHNOLOGY -->
+
+<section id="tech">
+<div class="container">
+
+<h2>Technology Stack</h2>
+
+<div class="grid">
+
+<div class="info-card" data-info="Flutter enables cross-platform mobile development with a single codebase and high performance UI.">
+Flutter Mobile Application
+</div>
+
+<div class="info-card" data-info="Bluetooth Low Energy beacons broadcast session codes within a limited range to verify physical presence.">
+Bluetooth Low Energy (iBeacon)
+</div>
+
+<div class="info-card" data-info="Java backend services manage session creation, validation, and secure communication.">
+Java Backend Services
+</div>
+
+<div class="info-card" data-info="MySQL securely stores student data, sessions, and attendance records.">
+MySQL Database
+</div>
+
+<div class="info-card" data-info="Docker provides consistent deployment and scalability across environments.">
+Docker Deployment
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- EFFECTIVENESS GRAPH -->
+
+<section id="effectiveness">
+<div class="container">
+
+<h2>Effectiveness of BeaconTrack</h2>
+
+<div class="graph-container">
+<canvas id="effectGraph"></canvas>
+</div>
+
+<p style="color:#94a3b8; font-size:14px;">
+Graph illustrating reduction in proxy attendance and time saved by faculty compared to traditional attendance methods.
+</p>
+
+</div>
+</section>
+
+<!-- FUTURE WORK -->
+
+<section id="future">
+<div class="container">
+
+<h2>Future Enhancements</h2>
+
+<div class="grid">
+
+<div class="info-card"
+     data-info="Machine learning models analyze beacon signal patterns and device behavior to detect spoofing attempts automatically.">
+Machine Learning based spoof detection
+</div>
+
+<div class="info-card"
+     data-info="Dashboard providing attendance trends, student participation insights, and faculty analytics.">
+Attendance analytics dashboard
+</div>
+
+<div class="info-card"
+     data-info="Multiple beacons working together to support large classrooms and multi-section environments.">
+Multi-class beacon clustering
+</div>
+
+<div class="info-card"
+     data-info="Scalable deployment architecture designed for universities and enterprise environments.">
+Enterprise scale deployment
+</div>
+
+<div class="info-card"
+     data-info="Integration with campus IoT systems such as smart entry, lab access, and automated reporting.">
+Integration with smart campus systems
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- DEVELOPED BY -->
+
+<section id="developed">
+<div class="container" style="text-align:center;">
+
+<h2>Developed By</h2>
+
+<p style="color:#e2e8f0; font-weight:600; margin-bottom:5px;">
+Hemchand Ankam
+</p>
+
+<p style="color:#94a3b8; margin-bottom:10px;">
+CSE (Networks) Undergraduate, KITSW
+</p>
+
+<a href="https://brikienlabs.tech"
+   target="_blank"
+   style="color:#38bdf8; font-weight:600; margin-bottom:20px; display:inline-block; text-decoration:none;">
+BRIKIEN LABS
+</a>
+
+<div style="display:flex; justify-content:center; gap:25px; flex-wrap:wrap;">
+
+<a href="mailto:hemchandankam@gmail.com"
+   style="color:#94a3b8; text-decoration:none; border:1px solid #1e293b;
+   padding:10px 18px; border-radius:8px;">
+📧 Email
+</a>
+
+<a href="https://www.linkedin.com/in/hemchand-ankam"
+   target="_blank"
+   style="color:#94a3b8; text-decoration:none; border:1px solid #1e293b;
+   padding:10px 18px; border-radius:8px;">
+🔗 LinkedIn
+</a>
+<a href="https://www.instagram.com/hemchand_ankam"
+   target="_blank"
+   style="color:#94a3b8; text-decoration:none; border:1px solid #1e293b;
+   padding:10px 18px; border-radius:8px;">
+📸 Instagram
+</a>
+
+
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 BRIKIEN LABS — Engineering Secure & Scalable Systems
+</footer>
+
+<script>
+
+window.onscroll=function(){
+let winScroll=document.body.scrollTop||document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+document.getElementById("progress").style.width=(winScroll/height)*100+"%";
+};
+
+const tooltip=document.getElementById("tooltip");
+
+document.querySelectorAll(".info-card").forEach(card=>{
+card.addEventListener("mouseenter",e=>{
+tooltip.innerText=card.dataset.info;
+tooltip.style.display="block";
+tooltip.style.top=e.clientY+15+"px";
+tooltip.style.left=e.clientX+15+"px";
+});
+card.addEventListener("mousemove",e=>{
+tooltip.style.top=e.clientY+15+"px";
+tooltip.style.left=e.clientX+15+"px";
+});
+card.addEventListener("mouseleave",()=>{
+tooltip.style.display="none";
+});
+});
+
+const ctx=document.getElementById('effectGraph');
+new Chart(ctx,{
+type:'bar',
+data:{
+labels:['Proxy Attendance Reduction','Faculty Time Saved'],
+datasets:[{
+data:[85,70],
+backgroundColor:['#38bdf8','#22c55e']
+}]
+},
+options:{
+plugins:{legend:{display:false}},
+scales:{y:{beginAtZero:true,max:100}}
+}
+});
+
+</script>
+
+</body>
+</html>

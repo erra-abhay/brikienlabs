@@ -1,0 +1,42 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: brikien-app
+    environment:
+      - NODE_ENV=production
+      - PORT=8787
+      - ALLOWED_ORIGIN=${ALLOWED_ORIGIN:-https://brikienlabs.tech}
+      - REQUIRE_HUMAN_CHECK=${REQUIRE_HUMAN_CHECK:-true}
+    expose:
+      - "8787"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:8787/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "1.0"
+
+  nginx:
+    image: nginx:alpine
+    container_name: brikien-nginx
+    ports:
+      - "55525:55525"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      app:
+        condition: service_healthy
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: "0.5"
