@@ -49,9 +49,7 @@ export function Navbar() {
     <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/70 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/60">
       <div className="container-px flex h-16 items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2">
-          <div className="grid h-9 w-9 place-items-center rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950">
-            <span className="text-xs font-black tracking-widest">BL</span>
-          </div>
+          <img src="/logo.png" alt="Brikien Labs" className="h-9 w-9 rounded-xl object-cover" />
           <div className="leading-tight">
             <div className="text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-50">
               BRIKIEN LABS
