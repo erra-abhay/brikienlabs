@@ -18,7 +18,7 @@ const blogs = [
     title: 'Papervault',
     description:
       'A high-speed question paper distribution platform where students can download papers instantly without login, while faculty securely upload and manage content.',
-    coverImage: '/blogs/papervault/architecture.png',
+    coverImage: '/blogs/papervault/banner.png',
   },
 ] as const;
 
