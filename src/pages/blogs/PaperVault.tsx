@@ -126,7 +126,7 @@ export function PapervaultPage() {
           <img
             src="/blogs/papervault/architecture.png"
             alt="Papervault architecture diagram"
-            className="rounded-2xl border max-w-3xl w-full shadow-lg transition hover:scale-[1.02]"
+            className="rounded-2xl border max-w-2xl w-full shadow-lg transition hover:scale-[1.02]"
           />
         </div>
       </section>
