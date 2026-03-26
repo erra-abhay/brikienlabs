@@ -3,7 +3,7 @@ import { Seo } from '../app/Seo';
 import { Badge, Card, CardContent, CardDescription, CardTitle } from '../shared/ui/Card';
 import { SectionHeading } from '../shared/ui/SectionHeading';
 
-const technologies = ['React', 'TypeScript', 'Node.js', 'Docker', 'CI/CD', 'Blockchain', 'Hyperledger Fabric'];
+const technologies = ['React', 'TypeScript', 'Node.js', 'Docker', 'CI/CD', 'Blockchain', 'Hyperledger Fabric','Flutter','Next.Js','Mongo DB','MYSQL DB','Java Servelets'];
 
 export function AboutPage() {
   return (
