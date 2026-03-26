@@ -10,7 +10,7 @@ const blogs = [
     title: 'BeaconTrack',
     description:
       'A secure Bluetooth-based attendance system designed to eliminate proxy attendance by verifying real physical presence using beacon proximity technology.',
-    coverImage: '/blogs/beacontrack/workflow_detailed.png',
+    coverImage: '/blogs/beacontrack/faculty_logo.jpeg',
   },
 
   {

@@ -102,7 +102,7 @@ export function BeaconTrackPage() {
           </div>
           <div className="md:col-span-2">
             <img
-              src="/blogs/beacontrack/workflow_detailed.png"
+              src="/blogs/beacontrack/faculty_logo.jpeg"
               alt="BeaconTrack workflow diagram"
               className="w-full rounded-2xl border border-slate-200 dark:border-slate-800"
               loading="lazy"
