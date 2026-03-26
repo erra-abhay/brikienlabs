@@ -17,9 +17,6 @@ RUN npm run build:api
 # Stage 2: Production Runtime
 FROM node:20-alpine AS runner
 
-# Install dumb-init for proper signal handling
-RUN apk add --no-cache dumb-init
-
 WORKDIR /app
 
 # Copy built frontend
@@ -39,5 +36,4 @@ USER node
 
 WORKDIR /app/server
 
-ENTRYPOINT ["dumb-init", "--"]
 CMD ["node", "dist/index.js"]

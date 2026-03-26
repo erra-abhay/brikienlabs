@@ -11,6 +11,7 @@ services:
       - REQUIRE_HUMAN_CHECK=${REQUIRE_HUMAN_CHECK:-true}
     expose:
       - "8787"
+    init: true
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:8787/api/health"]
