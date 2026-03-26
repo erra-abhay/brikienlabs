@@ -82,34 +82,32 @@ export function PapervaultPage() {
       />
 
       {/* HERO */}
-      <section className="relative overflow-hidden rounded-3xl border p-8 md:p-12">
-        <div className="grid gap-8 md:grid-cols-5 md:items-center">
-          <div className="md:col-span-3">
-            <div className="text-xs uppercase tracking-widest">Blog / Project</div>
-            <h1 className="mt-2 text-4xl font-semibold">Papervault</h1>
-            <p className="mt-4 text-sm">
-              Papervault is a modern academic content platform designed to deliver question papers instantly.
-              It removes unnecessary friction for students while enabling structured and controlled content
-              management for institutions.
-            </p>
+      {/* HERO */}
+<section className="relative overflow-hidden rounded-3xl border p-8 md:p-12">
+  <div className="grid gap-8 md:grid-cols-5 md:items-center">
+    
+    {/* LEFT SIDE TEXT */}
+    <div className="md:col-span-3">
+      <div className="text-xs uppercase tracking-widest">Blog / Project</div>
+      <h1 className="mt-2 text-4xl font-semibold">Papervault</h1>
+      <p className="mt-4 text-sm">
+        Papervault is a modern academic content platform designed to deliver question papers instantly.
+        It removes unnecessary friction for students while enabling structured and controlled content
+        management for institutions.
+      </p>
+    </div>
 
-            {/* ✅ ADDED BANNER */}
-            <img
-              src="/blogs/papervault/banner.png"
-              alt="Papervault banner"
-              className="mt-6 w-full rounded-2xl border shadow-lg"
-            />
-          </div>
+    {/* RIGHT SIDE SMALL IMAGE */}
+    <div className="md:col-span-2 flex justify-center md:justify-end">
+      <img
+        src="/blogs/papervault/banner.png"
+        alt="Papervault banner"
+        className="w-full max-w-sm rounded-2xl border shadow-lg"
+      />
+    </div>
 
-          {/*<div className="md:col-span-2">
-            <img
-              src="/blogs/papervault/architecture.png"
-              alt="Papervault architecture"
-              className="w-full rounded-2xl"
-            />
-          </div>*/}
-        </div>
-      </section>
+  </div>
+</section>
 
       {/* INTRO */}
       <section>
