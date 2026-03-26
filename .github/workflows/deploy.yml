@@ -1,4 +1,4 @@
-name: CI/CD — Build & Deploy
+name: 🚀 CI/CD — Build & Deploy
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint-and-build:
-    name: Lint & Build
+    name: 🔍 Lint & Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,20 +34,28 @@ jobs:
         run: npm run build:api
 
   deploy:
-    name: Deploy to Server
+    name: 🚀 Deploy to HPE Server
     needs: lint-and-build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    timeout-minutes: 15
+
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
-          script: |
-            cd /home/ethan/brikien
-            git pull origin main
-            docker compose down
-            docker compose up --build -d
-            docker image prune -f
+      - name: 📦 Pull latest code
+        run: |
+          cd ~/brikien
+          git fetch origin main
+          git reset --hard origin/main
+
+      - name: 🔨 Rebuild & deploy
+        run: |
+          cd ~/brikien
+          docker compose down
+          docker compose up --build -d
+          docker image prune -f
+
+      - name: ✅ Health check
+        run: |
+          sleep 5
+          docker ps --format "table {{.Names}}\t{{.Status}}" | grep brikien
+          echo "✅ Deployed at $(date)"
