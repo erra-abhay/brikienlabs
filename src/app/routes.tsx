@@ -7,6 +7,7 @@ import { ContactPage } from '../pages/ContactPage.tsx';
 import { NotFoundPage } from '../pages/NotFoundPage.tsx';
 import { BlogsPage } from '../pages/BlogsPage.tsx';
 import { BeaconTrackPage } from '../pages/blogs/BeaconTrackPage.tsx';
+import { PapervaultPage} from '../pages/blogs/PaperVault.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
       { path: 'contact', element: <ContactPage /> },
       { path: 'blogs', element: <BlogsPage /> },
       { path: 'blogs/beacontrack', element: <BeaconTrackPage /> },
+      { path: 'blogs/papervault', element: <PapervaultPage /> },
     ],
   },
 ]);

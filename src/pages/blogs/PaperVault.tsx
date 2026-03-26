@@ -165,8 +165,7 @@ export function PapervaultPage() {
           <CardContent>
             <CardDescription>
               Papervault is built using a containerized architecture with Docker, utilizing dual reverse proxy layers
-              for enhanced security and performance. Requests pass through Nginx load balancer before reaching backend
-              services, ensuring rate limiting, caching, and secure file delivery.
+              for enhanced security and performance.
             </CardDescription>
           </CardContent>
         </Card>
@@ -197,6 +196,20 @@ export function PapervaultPage() {
           {securityAdvantages.map((s) => (
             <Card key={s}>
               <CardContent>{s}</CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* ✅ FIXED SECTION (THIS REMOVES ERROR) */}
+      <section>
+        <SectionHeading eyebrow="Use cases" title="Real world applications" />
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {realWorldApplications.map((s) => (
+            <Card key={s}>
+              <CardContent>
+                <div className="text-sm font-medium">{s}</div>
+              </CardContent>
             </Card>
           ))}
         </div>

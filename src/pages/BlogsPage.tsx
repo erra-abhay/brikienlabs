@@ -12,12 +12,24 @@ const blogs = [
       'A secure Bluetooth-based attendance system designed to eliminate proxy attendance by verifying real physical presence using beacon proximity technology.',
     coverImage: '/blogs/beacontrack/workflow_detailed.png',
   },
+
+  {
+    slug: 'papervault',
+    title: 'Papervault',
+    description:
+      'A high-speed question paper distribution platform where students can download papers instantly without login, while faculty securely upload and manage content.',
+    coverImage: '/blogs/papervault/architecture.png',
+  },
 ] as const;
 
 export function BlogsPage() {
   return (
     <div className="space-y-10">
-      <Seo title="Blogs — BRIKIEN LABS" description="Projects and write-ups by BRIKIEN LABS." path="/blogs" />
+      <Seo
+        title="Blogs — BRIKIEN LABS"
+        description="Projects and write-ups by BRIKIEN LABS."
+        path="/blogs"
+      />
 
       <SectionHeading
         eyebrow="Blogs"
@@ -54,4 +66,3 @@ export function BlogsPage() {
     </div>
   );
 }
-
