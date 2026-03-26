@@ -82,32 +82,34 @@ export function PapervaultPage() {
       />
 
       {/* HERO */}
-      {/* HERO */}
-<section className="relative overflow-hidden rounded-3xl border p-8 md:p-12">
-  <div className="grid gap-8 md:grid-cols-5 md:items-center">
-    
-    {/* LEFT SIDE TEXT */}
-    <div className="md:col-span-3">
-      <div className="text-xs uppercase tracking-widest">Blog / Project</div>
-      <h1 className="mt-2 text-4xl font-semibold">Papervault</h1>
-      <p className="mt-4 text-sm">
-        Papervault is a modern academic content platform designed to deliver question papers instantly.
-        It removes unnecessary friction for students while enabling structured and controlled content
-        management for institutions.
-      </p>
-    </div>
+      <section className="relative overflow-hidden rounded-3xl border p-8 md:p-12">
+          <div className="grid gap-8 md:grid-cols-5 md:items-center">
+          <div className="md:col-span-3">
+            <div className="text-xs uppercase tracking-widest">Blog / Project</div>
+            <h1 className="mt-2 text-4xl font-semibold">Papervault</h1>
+            <p className="mt-4 text-sm">
+              Papervault is a modern academic content platform designed to deliver question papers instantly.
+              It removes unnecessary friction for students while enabling structured and controlled content
+              management for institutions.
+            </p>
+          </div>
+          <div className="md:col-span-2 flex justify-center md:justify-end">
+            <img
+              src="/blogs/papervault/banner.png"
+              alt="Papervault banner"
+              className="w-full max-w-sm rounded-2xl border shadow-lg"
+            />
+          </div>
 
-    {/* RIGHT SIDE SMALL IMAGE */}
-    <div className="md:col-span-2 flex justify-center md:justify-end">
-      <img
-        src="/blogs/papervault/banner.png"
-        alt="Papervault banner"
-        className="w-full max-w-sm rounded-2xl border shadow-lg"
-      />
-    </div>
-
-  </div>
-</section>
+          {/*<div className="md:col-span-2">
+            <img
+              src="/blogs/papervault/architecture.png"
+              alt="Papervault architecture"
+              className="w-full rounded-2xl"
+            />
+          </div>*/}
+        </div>
+      </section>
 
       {/* INTRO */}
       <section>
@@ -120,11 +122,11 @@ export function PapervaultPage() {
 
       {/* ✅ CENTER ARCHITECTURE IMAGE */}
       <section>
-        <div className="flex justify-center">
+        <div className="flex justify-center px-4">
           <img
             src="/blogs/papervault/architecture.png"
             alt="Papervault architecture diagram"
-            className="rounded-2xl border max-w-5xl w-full shadow-lg"
+            className="rounded-2xl border max-w-3xl w-full shadow-lg transition hover:scale-[1.02]"
           />
         </div>
       </section>
