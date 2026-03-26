@@ -101,13 +101,13 @@ export function PapervaultPage() {
             />
           </div>
 
-          <div className="md:col-span-2">
+          {/*<div className="md:col-span-2">
             <img
               src="/blogs/papervault/architecture.png"
               alt="Papervault architecture"
               className="w-full rounded-2xl"
             />
-          </div>
+          </div>*/}
         </div>
       </section>
 
