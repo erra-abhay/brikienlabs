@@ -24,7 +24,7 @@ const workAreas = [
   {
     title: 'Research & Emerging Tech',
     description:
-      'Internet of Things, beacon-based proximity systems, high-traffic testing, performance & stress testing, and experimental architectures.',
+      'BlockChain-Technology, beacon-based proximity systems, high-traffic testing, performance & stress testing,Dencentralised Systems,Distributed Systems , Permissioned Blockchains , and experimental architectures.',
   },
 ] as const;
 
@@ -43,7 +43,7 @@ const products = [
   },
   {
     title: 'Certify',
-    description: 'Smart text-to-PDF generation tool for teachers.',
+    description: 'Verify Any Certificate Instantly CertVerify uses Hyperledger Besu blockchain .',
   },
   {
     title: 'CampusCoin',
@@ -53,7 +53,7 @@ const products = [
 
 const team = [
   { name: 'HEMCHAND ANKAM' },
-  { name: 'abhay' },
+  { name: 'Abhay Reddy' },
 ] as const;
 
 export function HomePage() {
