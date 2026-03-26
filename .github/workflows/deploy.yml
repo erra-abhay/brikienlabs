@@ -10,27 +10,30 @@ jobs:
   lint-and-build:
     name: 🔍 Lint & Build
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v5
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v5
+
+      - name: 🟢 Setup Node
+        uses: actions/setup-node@v5
         with:
           node-version: 20
           cache: npm
 
-      - name: Install frontend deps
+      - name: 📦 Install frontend deps
         run: npm ci
 
-      - name: Install backend deps
+      - name: 📦 Install backend deps
         run: npm --prefix server ci
 
-      - name: Lint
+      - name: 🔍 Lint
         run: npm run lint
 
-      - name: Build frontend
+      - name: 🏗️ Build frontend
         run: npm run build
 
-      - name: Build backend
+      - name: 🏗️ Build backend
         run: npm run build:api
 
   deploy:
@@ -39,23 +42,34 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: self-hosted
     timeout-minutes: 15
+
     env:
       DOCKER_API_VERSION: "1.42"
 
     steps:
+      # 🔍 Debug (optional but useful first time)
+      - name: 🔍 Debug SSH
+        run: |
+          whoami
+          echo "Testing SSH connection..."
+          ssh -T git@github.com || true
+
+      # 📦 Pull latest code (FIXED)
       - name: 📦 Pull latest code
         run: |
-          cd ~/brikien
-          git fetch origin main
+          cd /home/ethan/brikien
+          GIT_SSH_COMMAND="ssh -i /home/ethan/.ssh/id_ed25519 -o IdentitiesOnly=yes" git fetch origin main
           git reset --hard origin/main
 
+      # 🔨 Rebuild & deploy
       - name: 🔨 Rebuild & deploy
         run: |
-          cd ~/brikien
+          cd /home/ethan/brikien
           docker-compose down
           docker-compose up --build -d
           docker image prune -f
 
+      # ✅ Health check
       - name: ✅ Health check
         run: |
           sleep 5
