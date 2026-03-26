@@ -25,13 +25,13 @@ const team: TeamMember[] = [
     imageUrl:
       'data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22640%22%20height%3D%22640%22%20viewBox%3D%220%200%20640%20640%22%3E%3Crect%20width%3D%22640%22%20height%3D%22640%22%20fill%3D%22%23e2e8f0%22/%3E%3Ctext%20x%3D%22320%22%20y%3D%22355%22%20text-anchor%3D%22middle%22%20font-family%3D%22Inter%2C%20system-ui%2C%20Arial%22%20font-size%3D%22112%22%20fill%3D%22%230f172a%22%20font-weight%3D%22800%22%3E%2B%3C/text%3E%3C/svg%3E',
   },
-  {
+  /*{
     name: 'You (Add Member)',
     role: 'Role',
     bio: 'Replace this card with your real team member details.',
     imageUrl:
       'data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22640%22%20height%3D%22640%22%20viewBox%3D%220%200%20640%20640%22%3E%3Crect%20width%3D%22640%22%20height%3D%22640%22%20fill%3D%22%23e2e8f0%22/%3E%3Ctext%20x%3D%22320%22%20y%3D%22355%22%20text-anchor%3D%22middle%22%20font-family%3D%22Inter%2C%20system-ui%2C%20Arial%22%20font-size%3D%22112%22%20fill%3D%22%230f172a%22%20font-weight%3D%22800%22%3E%2B%3C/text%3E%3C/svg%3E',
-  },
+  },*/
 ];
 
 export function TeamPage() {
