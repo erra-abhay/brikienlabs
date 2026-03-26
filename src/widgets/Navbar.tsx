@@ -41,25 +41,25 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/70 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/60">
       
-      {/* 🔥 FIXED NAVBAR */}
-      <div className="flex w-full h-16 items-center gap-4 px-4">
+      {/* ✅ RESPONSIVE NAVBAR */}
+      <div className="flex w-full h-16 items-center justify-between px-4">
         
         {/* LEFT: LOGO */}
         <Link to="/" className="flex items-center gap-3">
-          <img src="/logo.png" alt="Brikien Labs" className="h-11 w-11 rounded-xl object-cover" />
+          <img src="/logo.png" alt="Brikien Labs" className="h-10 w-10 md:h-11 md:w-11 rounded-xl object-cover" />
           <div className="leading-tight">
-            <div className="text-lg font-bold tracking-tight text-slate-900 dark:text-slate-50">
+            <div className="text-base md:text-lg font-bold tracking-tight text-slate-900 dark:text-slate-50">
               BRIKIEN LABS
             </div>
-            <div className="text-xs text-slate-500 dark:text-slate-400">
+            <div className="text-[10px] md:text-xs text-slate-500 dark:text-slate-400">
               Build. Break. Innovate.
             </div>
           </div>
         </Link>
 
-        {/* RIGHT: NAV MENU */}
+        {/* RIGHT: NAV (DESKTOP ONLY) */}
         <nav
-          className="hidden items-center gap-4 md:flex ml-auto"
+          className="hidden md:flex items-center gap-6"
           aria-label="Primary navigation"
         >
           {navItems.map((n) => (
@@ -72,19 +72,17 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* MOBILE BUTTON */}
-        <div className="flex items-center gap-2">
-          <Button
-            className="md:hidden"
-            variant="secondary"
-            size="sm"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-          >
-            Menu
-          </Button>
-        </div>
+        {/* MOBILE MENU BUTTON */}
+        <Button
+          className="md:hidden"
+          variant="secondary"
+          size="sm"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+        >
+          Menu
+        </Button>
       </div>
 
       {/* MOBILE MENU */}
@@ -104,6 +102,7 @@ export function Navbar() {
               end={'end' in n ? n.end : undefined}
             />
           ))}
+
           <div className="pt-2">
             <Link to="/contact" className="block">
               <Button className="w-full" variant="primary" size="md">
