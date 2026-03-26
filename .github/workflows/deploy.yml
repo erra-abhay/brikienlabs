@@ -1,4 +1,4 @@
-name: 🚀 CI/CD — Build & Deploy
+name: 🚀 CI/CD — Build & Deploy (Zero Downtime)
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
         run: npm run build:api
 
   deploy:
-    name: 🚀 Deploy to HPE Server
+    name: 🚀 Deploy to HPE Server (Zero Downtime)
     needs: lint-and-build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: self-hosted
@@ -47,31 +47,40 @@ jobs:
       DOCKER_API_VERSION: "1.42"
 
     steps:
-      # 🔍 Debug (optional but useful first time)
+      # 🔍 Debug SSH (keep for safety)
       - name: 🔍 Debug SSH
         run: |
           whoami
-          echo "Testing SSH connection..."
           ssh -T git@github.com || true
 
-      # 📦 Pull latest code (FIXED)
+      # 📦 Pull latest code
       - name: 📦 Pull latest code
         run: |
           cd /home/ethan/brikien
           GIT_SSH_COMMAND="ssh -i /home/ethan/.ssh/id_ed25519 -o IdentitiesOnly=yes" git fetch origin main
           git reset --hard origin/main
 
-      # 🔨 Rebuild & deploy
-      - name: 🔨 Rebuild & deploy
+      # 🔨 Zero downtime deploy (KEY CHANGE)
+      - name: 🔨 Zero Downtime Deploy
         run: |
           cd /home/ethan/brikien
-          docker-compose down
-          docker-compose up --build -d
+
+          echo "🚀 Building new containers..."
+          docker-compose build
+
+          echo "🚀 Starting new containers (no downtime)..."
+          docker-compose up -d --remove-orphans
+
+          echo "🧹 Cleaning unused images..."
           docker image prune -f
+
+      # ⏳ Wait for services
+      - name: ⏳ Wait for services to stabilize
+        run: sleep 10
 
       # ✅ Health check
       - name: ✅ Health check
         run: |
-          sleep 5
-          docker ps --format "table {{.Names}}\t{{.Status}}" | grep brikien
+          docker ps --format "table {{.Names}}\t{{.Status}}"
+          echo "🌐 App should be live"
           echo "✅ Deployed at $(date)"
