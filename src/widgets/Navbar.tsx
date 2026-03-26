@@ -38,29 +38,42 @@ export function Navbar() {
     setOpen(false);
   }, [location.pathname]);
 
-
-
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/70 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/60">
-      <div className="flex h-16 items-center justify-between gap-4 px-2">
+      
+      {/* 🔥 FIXED NAVBAR */}
+      <div className="flex w-full h-16 items-center gap-4 px-4">
+        
+        {/* LEFT: LOGO */}
         <Link to="/" className="flex items-center gap-3">
           <img src="/logo.png" alt="Brikien Labs" className="h-11 w-11 rounded-xl object-cover" />
           <div className="leading-tight">
             <div className="text-lg font-bold tracking-tight text-slate-900 dark:text-slate-50">
               BRIKIEN LABS
             </div>
-            <div className="text-xs text-slate-500 dark:text-slate-400">Build. Break. Innovate.</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400">
+              Build. Break. Innovate.
+            </div>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
+        {/* RIGHT: NAV MENU */}
+        <nav
+          className="hidden items-center gap-4 md:flex ml-auto"
+          aria-label="Primary navigation"
+        >
           {navItems.map((n) => (
-            <NavItem key={n.to} to={n.to} label={n.label} end={'end' in n ? n.end : undefined} />
+            <NavItem
+              key={n.to}
+              to={n.to}
+              label={n.label}
+              end={'end' in n ? n.end : undefined}
+            />
           ))}
         </nav>
 
+        {/* MOBILE BUTTON */}
         <div className="flex items-center gap-2">
-
           <Button
             className="md:hidden"
             variant="secondary"
@@ -74,6 +87,7 @@ export function Navbar() {
         </div>
       </div>
 
+      {/* MOBILE MENU */}
       <div
         id="mobile-nav"
         className={cn(
@@ -81,9 +95,14 @@ export function Navbar() {
           open ? 'border-t border-slate-200 dark:border-slate-800' : 'hidden',
         )}
       >
-        <div className="container-px flex flex-col gap-1 py-3">
+        <div className="px-4 flex flex-col gap-2 py-3">
           {navItems.map((n) => (
-            <NavItem key={n.to} to={n.to} label={n.label} end={'end' in n ? n.end : undefined} />
+            <NavItem
+              key={n.to}
+              to={n.to}
+              label={n.label}
+              end={'end' in n ? n.end : undefined}
+            />
           ))}
           <div className="pt-2">
             <Link to="/contact" className="block">
@@ -97,4 +116,3 @@ export function Navbar() {
     </header>
   );
 }
-
