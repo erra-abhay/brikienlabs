@@ -39,6 +39,8 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: self-hosted
     timeout-minutes: 15
+    env:
+      DOCKER_API_VERSION: "1.42"
 
     steps:
       - name: 📦 Pull latest code
