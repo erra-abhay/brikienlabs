@@ -29,7 +29,7 @@ const team: TeamMember[] = [
     role: 'Chief Technology Officer',
     bio: 'Replace this card with your real team member details.',
     imageUrl:
-      'data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22640%22%20height%3D%22640%22%20viewBox%3D%220%200%20640%20640%22%3E%3Crect%20width%3D%22640%22%20height%3D%22640%22%20fill%3D%22%23e2e8f0%2２/%3E%3Ctext%２ x%3D%２320%２ y%3D%２355%２ text-anchor%3D%２middle%２ font-family%3D%２Inter%，　system-ui%，　Arial％　font-size%3D％11２％　fill%3D％２３０f17２a％　font-weight%3D％８００％３E％２B％３C/text％３E％３C/svg％３E',
+      'https://static.vecteezy.com/system/resources/thumbnails/054/511/449/small/portrait-of-a-young-male-software-developer-in-his-office-photo.jpg',
   },
 ];
 
