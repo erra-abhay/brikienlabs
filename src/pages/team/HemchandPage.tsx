@@ -76,7 +76,7 @@ export function HemchandPage() {
         />
       </Block>
 
-      {/* EDUCATION */}
+      {/* EDUCATION 
       <Block title="education">
         <p>
           B.Tech — Computer Science & Networks<br />
@@ -85,7 +85,7 @@ export function HemchandPage() {
         <p className="mt-2">
           Intermediate — 92%
         </p>
-      </Block>
+      </Block> */}
 
       {/* CONTACT */}
       <Block title="contact">
