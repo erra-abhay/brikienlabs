@@ -9,7 +9,7 @@ export function NotFoundPage() {
 
   return (
     <div className="container-px py-16">
-      <Seo title="Not found — BRIKIEN LABS" description="Page not found." path="/404" />
+      <Seo title="Not found — BRIKIEN LABS" description="ayyooo em dorkaledha... 😢😢😢." path="/404" />
       <Card className="mx-auto max-w-xl">
         <CardContent>
           <CardTitle>dola em undadhu ekkada bokka 😎😎</CardTitle>
