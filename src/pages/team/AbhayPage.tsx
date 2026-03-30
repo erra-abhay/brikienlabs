@@ -2,109 +2,111 @@ import { ReactNode } from "react";
 
 export function AbhayPage() {
   return (
-    <div className="max-w-5xl mx-auto p-6 space-y-10">
+    <div className="max-w-4xl mx-auto px-6 py-10 space-y-10">
 
       {/* HEADER */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-5">
         <img
           src="https://t3.ftcdn.net/jpg/06/01/17/18/360_F_601171862_l7yZ0wujj8o2SowiKTUsfLEEx8KunYNd.jpg"
           alt="Abhay"
-          className="w-28 h-28 rounded-full object-cover border-2 border-blue-500 shadow-lg"
+          className="w-20 h-20 rounded-full object-cover"
         />
         <div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-            Abhay
-          </h1>
-          <p className="text-gray-400 mt-1">
-            DevOps • Blockchain • Infrastructure • Systems
+          <h1 className="text-2xl font-semibold">Abhay</h1>
+          <p className="text-sm text-gray-400">
+            DevOps • Infrastructure • Blockchain
           </p>
         </div>
       </div>
 
       {/* ABOUT */}
-      <div className="bg-slate-900 p-6 rounded-xl shadow-md space-y-3 border border-slate-800">
-        <p className="leading-relaxed text-gray-300">
-          Infrastructure engineer focused on building <b className="text-white">real-world distributed systems</b>.
-          Strong experience with Linux environments, containerized deployments, and enterprise blockchain networks.
-        </p>
-
-        <p className="leading-relaxed text-gray-300">
-          Proven system performance with <b className="text-white">700 concurrent users</b>, 
-          <b className="text-white"> 340K+ requests</b>, and <b className="text-white">99.61% uptime</b>.
-        </p>
-      </div>
-
-      {/* METRICS */}
-      <div className="grid grid-cols-3 gap-4">
-        <Metric value="700+" label="Users" />
-        <Metric value="340K+" label="Requests" />
-        <Metric value="99.61%" label="Uptime" />
-      </div>
+      <Block title="about">
+        Infrastructure engineer working with Linux systems, distributed
+        environments, and blockchain networks.
+        <br /><br />
+        Built production systems handling <b>700 concurrent users</b>,
+        <b> 340K+ requests</b> with <b>99.61% uptime</b>.
+      </Block>
 
       {/* SKILLS */}
-      <Section title="⚡ Skills">
-        <div className="grid sm:grid-cols-2 gap-3">
-          <Skill>Linux / Docker / Nginx</Skill>
-          <Skill>Netdata / Grafana / k6</Skill>
-          <Skill>AES-256 / JWT / SSH</Skill>
-          <Skill>KVM / QEMU / Virtualization</Skill>
-          <Skill>Hyperledger / Solidity</Skill>
-          <Skill>Node.js / PostgreSQL</Skill>
-        </div>
-      </Section>
+      <Block title="skills">
+        <Line label="Infrastructure">
+          Linux, Docker, Nginx, Networking
+        </Line>
+
+        <Line label="Monitoring">
+          Netdata, Grafana, k6, Playwright
+        </Line>
+
+        <Line label="Security">
+          AES-256, JWT, SSH Hardening, SELinux
+        </Line>
+
+        <Line label="Virtualization">
+          KVM, QEMU, libvirt
+        </Line>
+
+        <Line label="Blockchain">
+          Hyperledger Fabric, Besu QBFT, Solidity
+        </Line>
+
+        <Line label="Backend">
+          Node.js, TypeScript, PostgreSQL, Redis
+        </Line>
+      </Block>
 
       {/* PROJECTS */}
-      <Section title="🚀 Projects">
-        <Project
-          title="CertVerify"
-          desc="Blockchain-based certificate verification system with secure smart contracts and audit tracking."
+      <Block title="projects">
+        <Item
+          name="CertVerify"
+          desc="Private blockchain for certificate verification with secure smart contracts."
         />
-        <Project
-          title="CampusCoin"
-          desc="Enterprise token network using Hyperledger Fabric with audit-level validation."
+        <Item
+          name="CampusCoin"
+          desc="Enterprise token network using Hyperledger Fabric."
         />
-        <Project
-          title="Infrastructure Stack"
-          desc="Dockerized deployment system with Nginx routing and monitoring pipelines."
+        <Item
+          name="Infrastructure Stack"
+          desc="Docker + Nginx based deployment system with monitoring."
         />
-        <Project
-          title="HPE Server Lab"
-          desc="Bare-metal Linux server with KVM virtualization and load testing."
+        <Item
+          name="HPE Server Lab"
+          desc="Bare-metal Linux server with virtualization and load testing."
         />
-      </Section>
+      </Block>
 
       {/* EXPERIENCE */}
-      <Section title="💼 Experience">
-        <div className="p-4 rounded-lg bg-slate-800 border border-slate-700">
-          <p className="font-semibold">Blockchain Research Intern</p>
-          <p className="text-gray-400 text-sm">
-            Symbiosis Institute of Technology • May 2025 – Jul 2025
-          </p>
-        </div>
-      </Section>
+      <Block title="experience">
+        <p>
+          <b>Blockchain Research Intern</b><br />
+          Symbiosis Institute of Technology<br />
+          May 2025 – Jul 2025
+        </p>
+      </Block>
 
       {/* CONTACT */}
-      <Section title="📬 Contact">
-        <div className="space-y-2">
-          <p>Email: <span className="text-blue-400">erraabhay@gmail.com</span></p>
+      <Block title="contact">
+        <p>Email: erraabhay@gmail.com</p>
+        <p>
+          LinkedIn:{" "}
           <a
             href="https://linkedin.com/in/abhay-reddy-erra-a3a1a4367"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg transition"
+            className="underline"
           >
-            LinkedIn Profile →
+            linkedin profile
           </a>
-        </div>
-      </Section>
+        </p>
+      </Block>
 
     </div>
   );
 }
 
-/* COMPONENTS */
+/* CLEAN COMPONENTS */
 
-function Section({
+function Block({
   title,
   children,
 }: {
@@ -112,47 +114,42 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <div className="space-y-4">
-      <h2 className="text-xl font-semibold text-white">{title}</h2>
-      {children}
+    <div>
+      <div className="text-sm text-gray-400 mb-2">
+        &gt; {title}
+      </div>
+      <div className="space-y-2 text-sm leading-relaxed">
+        {children}
+      </div>
     </div>
   );
 }
 
-function Project({
-  title,
+function Line({
+  label,
+  children,
+}: {
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <p>
+      <span className="text-gray-400">{label}:</span> {children}
+    </p>
+  );
+}
+
+function Item({
+  name,
   desc,
 }: {
-  title: string;
+  name: string;
   desc: string;
 }) {
   return (
-    <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg hover:border-blue-500 transition">
-      <p className="font-semibold">{title}</p>
+    <div>
+      <p className="font-medium">{name}</p>
       <p className="text-gray-400 text-sm">{desc}</p>
-    </div>
-  );
-}
-
-function Metric({
-  value,
-  label,
-}: {
-  value: string;
-  label: string;
-}) {
-  return (
-    <div className="p-4 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg text-center border border-slate-700 hover:border-blue-500 transition">
-      <div className="text-xl font-bold text-white">{value}</div>
-      <div className="text-sm text-gray-400">{label}</div>
-    </div>
-  );
-}
-
-function Skill({ children }: { children: ReactNode }) {
-  return (
-    <div className="px-3 py-2 bg-slate-800 rounded-md text-sm text-gray-300 border border-slate-700 hover:border-blue-500 transition">
-      {children}
     </div>
   );
 }
