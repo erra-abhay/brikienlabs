@@ -86,7 +86,7 @@ export function AbhayPage() {
 
       {/* CONTACT */}
       <Block title="contact">
-        <p>Email: erraabhay@gmail.com</p>
+        {/* <p>Email: erraabhay@gmail.com</p> */}
         <p>
           LinkedIn:{" "}
           <a
