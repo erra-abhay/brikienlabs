@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export function AbhayPage() {
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-8">
@@ -6,6 +8,7 @@ export function AbhayPage() {
       <div className="flex items-center gap-6">
         <img
           src="https://t3.ftcdn.net/jpg/06/01/17/18/360_F_601171862_l7yZ0wujj8o2SowiKTUsfLEEx8KunYNd.jpg"
+          alt="Abhay"
           className="w-28 h-28 rounded-full object-cover border-2 border-gray-700"
         />
         <div>
@@ -31,20 +34,11 @@ export function AbhayPage() {
         </p>
       </div>
 
-      {/* HIGHLIGHT METRICS */}
+      {/* METRICS */}
       <div className="grid grid-cols-3 gap-4 text-center">
-        <div className="p-4 bg-slate-800 rounded-lg">
-          <div className="text-xl font-bold">700+</div>
-          <div className="text-sm text-gray-400">Concurrent Users</div>
-        </div>
-        <div className="p-4 bg-slate-800 rounded-lg">
-          <div className="text-xl font-bold">340K+</div>
-          <div className="text-sm text-gray-400">Requests</div>
-        </div>
-        <div className="p-4 bg-slate-800 rounded-lg">
-          <div className="text-xl font-bold">99.61%</div>
-          <div className="text-sm text-gray-400">Uptime</div>
-        </div>
+        <Metric value="700+" label="Concurrent Users" />
+        <Metric value="340K+" label="Requests" />
+        <Metric value="99.61%" label="Uptime" />
       </div>
 
       {/* SKILLS */}
@@ -96,6 +90,7 @@ export function AbhayPage() {
             href="https://linkedin.com/in/abhay-reddy-erra-a3a1a4367"
             className="text-blue-400"
             target="_blank"
+            rel="noopener noreferrer"
           >
             View Profile
           </a>
@@ -106,9 +101,15 @@ export function AbhayPage() {
   );
 }
 
-/* SMALL COMPONENTS (clean UI reuse) */
+/* ✅ REUSABLE COMPONENTS (NO ANY) */
 
-function Section({ title, children }: any) {
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
   return (
     <div className="bg-slate-900 p-5 rounded-lg">
       <h2 className="text-xl font-semibold mb-3">{title}</h2>
@@ -117,11 +118,32 @@ function Section({ title, children }: any) {
   );
 }
 
-function Project({ title, desc }: any) {
+function Project({
+  title,
+  desc,
+}: {
+  title: string;
+  desc: string;
+}) {
   return (
     <div className="mb-3">
       <p className="font-semibold">{title}</p>
       <p className="text-gray-400 text-sm">{desc}</p>
+    </div>
+  );
+}
+
+function Metric({
+  value,
+  label,
+}: {
+  value: string;
+  label: string;
+}) {
+  return (
+    <div className="p-4 bg-slate-800 rounded-lg">
+      <div className="text-xl font-bold">{value}</div>
+      <div className="text-sm text-gray-400">{label}</div>
     </div>
   );
 }
