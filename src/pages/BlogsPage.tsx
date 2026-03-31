@@ -20,6 +20,13 @@ const blogs = [
       'A high-speed question paper distribution platform where students can download papers instantly without login, while faculty securely upload and manage content.',
     coverImage: '/blogs/papervault/banner.png',
   },
+  {
+    slug: 'certify',
+    title: 'Certify',
+    description:
+      'A blockchain-based certification platform that ensures the authenticity and immutability of digital credentials.',
+    coverImage: '/blogs/certify/cover.png',
+  },
 ] as const;
 
 export function BlogsPage() {

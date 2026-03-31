@@ -29,7 +29,7 @@ services:
     image: nginx:alpine
     container_name: brikien-nginx
     ports:
-      - "127.0.0.1:55525:80"
+      - "127.0.0.1:55528:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
