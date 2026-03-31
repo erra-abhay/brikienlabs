@@ -25,7 +25,7 @@ const blogs = [
     title: 'Certify',
     description:
       'A blockchain-based certification platform that ensures the authenticity and immutability of digital credentials.',
-    coverImage: '/blogs/certify/cover.png',
+    coverImage: '/blogs/certify/banner.png',
   },
 ] as const;
 
