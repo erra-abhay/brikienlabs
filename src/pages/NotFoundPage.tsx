@@ -16,7 +16,7 @@ export function NotFoundPage() {
           <CardDescription className="mt-2">{message}</CardDescription>
           <div className="mt-6">
             <Link to="/">
-              <Button>em chestav home ki poooo...</Button>
+              <Button>go back</Button>
             </Link>
           </div>
         </CardContent>
