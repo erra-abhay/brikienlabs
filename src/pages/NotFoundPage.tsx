@@ -12,7 +12,7 @@ export function NotFoundPage() {
       <Seo title="Not found — BRIKIEN LABS" description="Page not found." path="/404" />
       <Card className="mx-auto max-w-xl">
         <CardContent>
-          <CardTitle>Page not found</CardTitle>
+          <CardTitle>Page not</CardTitle>
           <CardDescription className="mt-2">{message}</CardDescription>
           <div className="mt-6">
             <Link to="/">
