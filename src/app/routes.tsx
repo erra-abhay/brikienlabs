@@ -8,6 +8,7 @@ import { NotFoundPage } from '../pages/NotFoundPage.tsx';
 import { BlogsPage } from '../pages/BlogsPage.tsx';
 import { BeaconTrackPage } from '../pages/blogs/BeaconTrackPage.tsx';
 import { PapervaultPage} from '../pages/blogs/PaperVault.tsx';
+import { CertifyPage } from '../pages/blogs/CertifyPage.tsx';
 import { AbhayPage } from '../pages/team/AbhayPage';
 import { HemchandPage } from '../pages/team/HemchandPage';
 import { AfnanPage } from '../pages/team/AfnanPage';
@@ -25,6 +26,7 @@ export const router = createBrowserRouter([
       { path: 'blogs', element: <BlogsPage /> },
       { path: 'blogs/beacontrack', element: <BeaconTrackPage /> },
       { path: 'blogs/papervault', element: <PapervaultPage /> },
+      { path: 'blogs/certify', element: <CertifyPage /> },
       { path: 'team/abhay', element: <AbhayPage /> },
       { path: 'team/hemchand', element: <HemchandPage /> },
       { path: 'team/afnan', element: <AfnanPage /> },
