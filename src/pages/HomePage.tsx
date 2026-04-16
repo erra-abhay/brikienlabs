@@ -54,7 +54,7 @@ const products = [
 const team = [
   { name: 'HEMCHAND ANKAM' },
   { name: 'Abhay Reddy' },
-  { name: 'Afnan pasha'}
+  
 ] as const;
 
 export function HomePage() {

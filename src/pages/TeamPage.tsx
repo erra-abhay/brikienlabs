@@ -29,14 +29,6 @@ const team: TeamMember[] = [
       'https://img.freepik.com/free-photo/person-playing-3d-video-games-device_23-2151005751.jpg',
     path: '/team/hemchand', // ✅ LINK
   },
-  {
-    name: 'Afnan (CTO & Co-Founder)',
-    role: 'Chief Technology Officer',
-    bio: 'Replace this card with your real team member details.',
-    imageUrl:
-      'https://static.vecteezy.com/system/resources/thumbnails/054/511/449/small/portrait-of-a-young-male-software-developer-in-his-office-photo.jpg',
-    path: '/team/afnan', // ✅ LINK
-  },
 ];
 
 export function TeamPage() {
